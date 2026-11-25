@@ -1,0 +1,23 @@
+# Blueprint opcional. Tambem da para criar o servico manualmente (veja README.md).
+services:
+  - type: web
+    name: loja-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/teste
+    envVars:
+      - key: DB_URL
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      # Opcional: exigir login do Supabase nas rotas /api/**
+      - key: APP_AUTH_ATIVA
+        value: "false"
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
